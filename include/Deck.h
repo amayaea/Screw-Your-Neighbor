@@ -19,11 +19,11 @@ public:
     //Copy Constructor
     Deck(const Deck &rhs);
 
-    //Destructor; Deletes the card
-    ~Deck();
-
     // Equals Operator
     const Deck &operator=(const Deck &rhs);
+
+    // Get cardCount
+    uint32_t getCardCount() const;
 
     // Shuffles the deck once all the cards are assigned
     void shuffle();

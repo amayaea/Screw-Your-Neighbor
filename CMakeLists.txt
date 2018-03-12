@@ -3,4 +3,4 @@ project(Screw-Your-Neighbor)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(Screw-Your-Neighbor main.cpp src/Card.cpp include/Card.h src/Deck.cpp include/Deck.h)
+add_executable(Screw-Your-Neighbor main.cpp src/Card.cpp include/Card.h src/Deck.cpp include/Deck.h include/Player.h src/Player.cpp)

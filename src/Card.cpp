@@ -20,9 +20,9 @@ Card::Card(const Card &rhs) : value(rhs.value), suit(rhs.suit){
 }
 
 //Destructor; Deletes the card
-Card::~Card(){
-    delete *this;
-}
+//Card::~Card(){
+//    delete *this;
+//}
 
 // Equals Operator
 const Card &Card::operator=(const Card &rhs){
@@ -62,7 +62,7 @@ std::string Card::toString() const{
     if (value == 13){
         result += "King ";
     }
-    result += "of " + value;
+    result += "of " + suit;
     return result;
 }
 

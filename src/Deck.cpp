@@ -6,13 +6,13 @@
 
 // Default constructor: assigns the 52 cards to deck
 Deck::Deck() : cardCount(0){
-    uint32_t cardCount = 0;
+    uint32_t cardCounter = 0;
     std::string suits[] = {"Spades" , "Hearts" , "Clubs" , "Diamonds"};
     for (uint32_t i = 0 ; i < suits->length() ; ++i){
         for (uint32_t j = 1 ; j < 14 ; ++j){
             Card temp(j, suits[i]);
-            myDeck[cardCount] = temp;
-            ++cardCount;
+            myDeck[cardCounter] = temp;
+            ++cardCounter;
         }
     }
 }
@@ -23,9 +23,9 @@ Deck::Deck(const Deck &rhs) : cardCount(rhs.cardCount) {
 }
 
 //Destructor; Deletes the card
-Deck::~Deck(){
-    delete *this;
-}
+//Deck::~Deck(){
+//    delete *this;
+//}
 
 // Equals Operator
 const Deck &Deck::operator=(const Deck &rhs){
@@ -35,6 +35,11 @@ const Deck &Deck::operator=(const Deck &rhs){
         std::swap(cardCount, tmp.cardCount);
     }
     return *this;
+}
+
+// Get cardCount
+uint32_t Deck::getCardCount() const{
+    return cardCount;
 }
 
 // Shuffles the deck once all the cards are assigned
@@ -49,7 +54,7 @@ void Deck::shuffle(){
     cardCount = 0;
 }
 
-// Deals out one card from the deck of 52, refrences class card
+// Deals out one card from the deck of 52, references class card
 Card Deck::dealCard(){
     cardCount++;
     return myDeck[cardCount - 1];

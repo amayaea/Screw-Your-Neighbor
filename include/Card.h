@@ -21,9 +21,6 @@ public:
     //Copy Constructor
     Card(const Card &rhs);
 
-    //Destructor; Deletes the card
-    ~Card();
-
     // Equals Operator
     const Card &operator=(const Card &rhs);
 
