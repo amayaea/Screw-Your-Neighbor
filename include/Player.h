@@ -12,11 +12,8 @@
 class Player{
 public:
 
-    // Default Constructor
-    Player();
-
-    // Constructor with all parameters passed in.
-    Player(std::string name , uint32_t lives, bool user, Card card);
+    // Constructor with all parameters minus myCard passed in.
+    Player(std::string &name , uint32_t &lives, bool &user);
 
     // Copy Constructor
     Player(const Player &rhs);
@@ -30,16 +27,19 @@ public:
     uint32_t getLives() const;
 
     // Get user
-    bool getUser() const;
+    bool getCPU() const;
 
-    //Get card
-    bool getCard() const;
+    // Get card
+    Card getCard() const;
+
+    // Set card
+    void setCard(Card set);
 
     // Trade method
     void trade(Player neighbor);
 
     // Trade with deck method
-    void tradeWithDeck();
+    void tradeWithDeck(Deck cards);
 
     // Lose Life
     void loseLife();
@@ -50,10 +50,10 @@ private:
     std::string myName;
 
     // Player's Lives
-    uint32_t myLives;
+    uint32_t numLives;
 
-    // Bool if CPU or user
-    bool isUser;
+    // Bool if CPU or user. 
+    bool isCPU;
 
     // Player's card for round
     Card myCard;
