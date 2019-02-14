@@ -5,37 +5,15 @@
 #include "../include/Card.h"
 
 // Default Constructor
-Card::Card() : value(0), suit(""){
-    // nothing to do
-}
+Card::Card() = default;
 
 // Constructor that takes a value and suit
-Card::Card(uint32_t &cardValue, std::string &cardSuit) : value(cardValue), suit(cardSuit){
+Card::Card(int &cardValue, std::string &cardSuit) : value(cardValue), suit(cardSuit){
     // nothing to do
-}
-
-// The copy constructor.
-Card::Card(const Card &rhs) : value(rhs.value), suit(rhs.suit){
-    // nothing to do
-}
-
-//Destructor; Deletes the card
-//Card::~Card(){
-//    delete *this;
-//}
-
-// Equals Operator
-const Card &Card::operator=(const Card &rhs){
-    if (this != &rhs) {
-        Card tmp(rhs);
-        std::swap(value, tmp.value);
-        std::swap(suit, tmp.suit);
-    }
-    return *this;
 }
 
 // Get Value
-uint32_t Card::getValue() const{
+int Card::getValue() const{
     return value;
 }
 

@@ -2,6 +2,9 @@
 // Created by Emilio Amaya on 3/7/18.
 //
 
+#include "include/Game.h"
+
 int main(){
-    return 0;
+    Game(0,5,1);
+
 }

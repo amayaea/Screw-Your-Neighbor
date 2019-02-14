@@ -4,18 +4,12 @@
 
 #include "../include/Player.h"
 
-// Constructor with all parameters passed in.
-Player::Player(std::string &name , uint32_t &lives, bool &user)
-        : myName(name) , numLives(lives), isCPU(user){
-
+// Constructor with all parameters minus myCard passed in.
+Player::Player(std::string &name , int &lives, bool &user)
+        : myName(name) , numLives(lives) , isCPU(user), myCard() {
+    // nothing to do
 }
 
-// Copy Constructor
-Player::Player(const Player &rhs){
-
-}
-
-// Destructor?
 
 // Get name
 std::string Player::getName() const{
@@ -23,7 +17,7 @@ std::string Player::getName() const{
 }
 
 // Get Lives
-uint32_t Player::getLives() const{
+int Player::getLives() const{
     return numLives;
 }
 
@@ -44,15 +38,16 @@ void Player::setCard(Card set){
 // Trade method
 void Player::trade(Player neighbor){
     if (neighbor.myCard . getValue() == 13){
-        std::cout << "Your neighbor has a King! No trade, you've been screwed!" <<std::endl;
+        std::cout <<  myName + "'s neighbor has a King! No trade." <<std::endl;
     }
     else{
         std::swap(myCard, neighbor.myCard);
+        std::cout << myName + "traded with their neighbor." <<std::endl;
     }
 }
 
 // Trade with deck method
-void Player::tradeWithDeck(Deck cards){
+void Player::tradeWithDeck(Deck &cards){
     myCard = cards.dealCard();
 }
 

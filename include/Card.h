@@ -12,20 +12,14 @@
 class Card {
 public:
 
-    // Default Constructor
+    // Default constructor
     Card();
 
     // Constructor that takes a value and suit
-    Card(uint32_t &cardValue, std::string &cardSuit);
-
-    //Copy Constructor
-    Card(const Card &rhs);
-
-    // Equals Operator
-    const Card &operator=(const Card &rhs);
+    Card(int &cardValue, std::string &cardSuit);
 
     // Get Value
-    uint32_t getValue() const;
+    int getValue() const;
 
     // Get Suit
     std::string getSuit() const;
@@ -35,7 +29,7 @@ public:
 
 private:
     // value field
-    uint32_t value;
+    int value;
 
     // suit field
     std::string suit;

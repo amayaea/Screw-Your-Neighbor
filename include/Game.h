@@ -14,16 +14,16 @@
 class Game{
 public:
     // Creates the game
-    Game(uint32_t numPlayers, u_int32_t numCPU, u_int32_t numLives);
+    Game(int numPlayers, int numCPU, int numLives);
 
     // Plays the round
     void playRound();
 
-    // Prepares the next round
-    void prepareRound();
-
     // Eliminates a player after they have lost all their lives
-    std::string eliminatePlayer();
+    void eliminatePlayer(Player loser);
+
+    // CPU decided to trade or not
+    void CPUTrade(Player cpu, Player neighbor, bool last);
 
 private:
 
