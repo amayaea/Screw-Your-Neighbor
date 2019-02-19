@@ -34,19 +34,22 @@ void Player::setCard(Card set){
 }
 
 // Trade method
-void Player::trade(Player neighbor){
+void Player::trade(Player &neighbor){
     if (neighbor.myCard . getValue() == 13){
         std::cout <<  myName + "'s neighbor has a King! No trade." <<std::endl;
     }
     else{
-        std::swap(myCard, neighbor.myCard);
-        std::cout << myName + "traded with their neighbor." <<std::endl;
+        Card temp = myCard;
+        myCard = neighbor.getCard();
+        neighbor.setCard(temp);
+        std::cout << myName + " traded with their neighbor." <<std::endl;
     }
 }
 
 // Trade with deck method
 void Player::tradeWithDeck(Deck &cards){
     myCard = cards.dealCard();
+    std::cout <<  myName + " traded with the deck" <<std::endl;
 }
 
 // Lose Life

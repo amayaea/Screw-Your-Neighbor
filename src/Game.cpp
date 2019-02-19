@@ -21,6 +21,14 @@ Game::Game(int numPlayers, int numCPU, int numLives){
 
 }
 
+Deck Game::getGameDeck(){
+    return gameDeck;
+}
+
+std::vector<Player> Game::getPlayers(){
+    return players;
+}
+
 // Plays the round
 void Game::playRound(){
     // Shuffles the deck
@@ -29,7 +37,13 @@ void Game::playRound(){
     // Deals cards to all the players
     for(int i = 0 ; i < players.size() ; i++){
         players[i].setCard(gameDeck.dealCard());
-        std::cout << "Cards have been dealt to all players" << std::endl;
+    }
+
+    std::cout << "Cards have been dealt to all players" << std::endl;
+
+    // For Testing:
+    for (int i = 0 ; i < players.size() ; i++){
+        std::cout << players[i].getName() + ": " + players[i].getCard().toString() << std::endl;
     }
 
     bool last = false;
@@ -45,6 +59,22 @@ void Game::playRound(){
         }
     }
 
+    std::cout << "Trading has ended" << std::endl;
+
+    // For Testing:
+    for (int i = 0 ; i < players.size() ; i++){
+        std::cout << players[i].getName() + ": " + players[i].getCard().toString() << std::endl;
+    }
+
+    findLosers(players);
+
+    // Dealer is passed to the left
+    players.push_back(players[0]);
+    players.erase(players.begin());
+
+}
+
+void Game::findLosers(std::vector<Player> players){
     // Loser is Decided
     std::vector<Player> losers;
     int lowCard = 14;
@@ -62,20 +92,15 @@ void Game::playRound(){
     }
 
     // Each player in loser vector loses a life
-    for(int m = 0 ; m < players.size() ; m++){
-        players[m].loseLife();
-        std::cout << players[m].getName() + " lost!" << std::endl;
-        if (players[m].getLives() == 0)
-            eliminatePlayer(players[m]);
+    for(int m = 0 ; m < losers.size() ; m++){
+        losers[m].loseLife();
+        std::cout << losers[m].getName() + " lost!" << std::endl;
+        if (losers[m].getLives() == 0)
+            eliminatePlayer(losers[m]);
     }
-
-    // Dealer is passed to the left
-    players.push_back(players[0]);
-    players.erase(players.begin());
-
 }
 
-void Game::CPUTrade(Player cpu, Player neighbor, bool last){
+void Game::CPUTrade(Player &cpu, Player &neighbor, bool last){
     auto numPlayers = (int)players.size();
     int tradeThreshhold = 13 / numPlayers;
     if (cpu.getCard().getValue() <= tradeThreshhold) {
@@ -85,7 +110,7 @@ void Game::CPUTrade(Player cpu, Player neighbor, bool last){
             cpu.trade(neighbor);
     }
     else{
-        std::cout << cpu.getName() + " passes";
+        std::cout << cpu.getName() + " passes" << std::endl;
     }
 
 }

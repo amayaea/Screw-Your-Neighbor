@@ -12,20 +12,18 @@ int main(){
     test.setSuit(heart);
     int one = 1;
     test.setValue(one);
-    std::cout << test.toString() << std::endl;
+    std::cout << test.toString() << std::endl;*/
 
-    Deck testDeck;
+    /*Deck testDeck;
     testDeck.shuffle();
     for (int i = 0 ; i < SIZE ; i++){
         std::cout << testDeck.getDeck()[i].toString() << std::endl;
     }
-    std::cout << std::endl;
-    test = testDeck.dealCard();
-    for (int i = 0 ; i < SIZE ; i++){
-        std::cout << testDeck.getDeck()[i].toString() << std::endl;
-    }*/
+    std::cout << std::endl;*/
 
-    Game g(0, 4, 1);
-    g.playRound();
+    Game g(0, 10, 1);
+    while(g.getPlayers().size() > 1) {
+        g.playRound();
+    }
 
 }

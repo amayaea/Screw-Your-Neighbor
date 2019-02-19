@@ -31,7 +31,7 @@ public:
     void setCard(Card set);
 
     // Trade method
-    void trade(Player neighbor);
+    void trade(Player &neighbor);
 
     // Trade with deck method
     void tradeWithDeck(Deck &cards);

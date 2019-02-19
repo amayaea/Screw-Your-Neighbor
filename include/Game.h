@@ -16,14 +16,20 @@ public:
     // Creates the game
     Game(int numPlayers, int numCPU, int numLives);
 
+    Deck getGameDeck();
+
+    std::vector<Player> getPlayers();
+
     // Plays the round
     void playRound();
+
+    void findLosers(std::vector<Player> players);
 
     // Eliminates a player after they have lost all their lives
     void eliminatePlayer(Player loser);
 
     // CPU decided to trade or not
-    void CPUTrade(Player cpu, Player neighbor, bool last);
+    void CPUTrade(Player &cpu, Player &neighbor, bool last);
 
 private:
 
