@@ -12,11 +12,9 @@
 class Card {
 public:
 
-    // Default constructor
-    Card();
+public:
 
-    // Constructor that takes a value and suit
-    Card(int &cardValue, std::string &cardSuit);
+    Card();
 
     // Get Value
     int getValue() const;
@@ -24,8 +22,12 @@ public:
     // Get Suit
     std::string getSuit() const;
 
+    void setValue(int &val);
+
+    void setSuit(std::string &s);
+
     // Print the card
-    std::string toString() const;
+    std::string toString();
 
 private:
     // value field

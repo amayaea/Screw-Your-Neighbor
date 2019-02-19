@@ -5,37 +5,30 @@
 #include "../include/Deck.h"
 
 // Default constructor: assigns the 52 cards to deck
-Deck::Deck() : cardCount(0){
-    int cardCounter = 0;
-    std::string suits[] = {"Spades" , "Hearts" , "Clubs" , "Diamonds"};
-    for (int i = 0 ; i < suits->length() ; ++i){
+Deck::Deck(){
+    std::vector<std::string> suits = {"Spades" , "Hearts" , "Clubs" , "Diamonds"};
+    for (int i = 0 ; i < suits.size() ; ++i){
         for (int j = 1 ; j < 14 ; ++j){
-            Card temp(j, suits[i]);
-            myDeck[cardCounter] = temp;
-            ++cardCounter;
+            Card temp;
+            temp.setValue(j);
+            temp.setSuit(suits[i]);
+            myDeck.push_back(temp);
         }
     }
 }
 
-// Get cardCount
-int Deck::getCardCount() const{
-    return cardCount;
+std::vector<Card> Deck::getDeck() {
+    return myDeck;
 }
 
 // Shuffles the deck once all the cards are assigned
-// Will also reset cardCount to be 0
 void Deck::shuffle(){
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int > distribution(0,SIZE - 1);
-    for(int i = 0; i < SIZE; ++i) {
-        int swapCard = distribution(generator);// generates number in the range 0 , SIZE - 1
-        std::swap(myDeck[i] , myDeck[swapCard]);
-    }
-    cardCount = 0;
+    std::random_shuffle(myDeck.begin(), myDeck.end());
 }
 
 // Deals out one card from the deck of 52, references class card
 Card Deck::dealCard(){
-    cardCount++;
-    return myDeck[cardCount - 1];
+    myDeck.push_back(myDeck.front());
+    myDeck.erase(myDeck.begin());
+    return myDeck.back();
 }

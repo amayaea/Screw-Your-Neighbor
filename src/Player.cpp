@@ -6,10 +6,8 @@
 
 // Constructor with all parameters minus myCard passed in.
 Player::Player(std::string &name , int &lives, bool &user)
-        : myName(name) , numLives(lives) , isCPU(user), myCard() {
-    // nothing to do
+        : myName(name) , numLives(lives) , isCPU(user) {
 }
-
 
 // Get name
 std::string Player::getName() const{

@@ -4,12 +4,8 @@
 
 #include "../include/Card.h"
 
-// Default Constructor
-Card::Card() = default;
+Card::Card(){
 
-// Constructor that takes a value and suit
-Card::Card(int &cardValue, std::string &cardSuit) : value(cardValue), suit(cardSuit){
-    // nothing to do
 }
 
 // Get Value
@@ -22,25 +18,33 @@ std::string Card::getSuit() const{
     return suit;
 }
 
+void Card::setValue(int &val){
+    value = val;
+}
+
+void Card::setSuit(std::string &s){
+    suit = s;
+}
+
 // Print the card
-std::string Card::toString() const{
+std::string Card::toString() {
     std::string result;
     if (value == 1){
-        result += "Ace ";
+        result += "Ace";
     }
     if (value > 1 && value < 11){
         result += std::to_string(value);
     }
     if (value == 11){
-        result += "Jack ";
+        result += "Jack";
     }
     if (value == 12){
-        result += "Queen ";
+        result += "Queen";
     }
     if (value == 13){
-        result += "King ";
+        result += "King";
     }
-    result += "of " + suit;
+    result += " of " + suit;
     return result;
 }
 

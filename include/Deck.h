@@ -16,8 +16,7 @@ public:
     // Default constructor: assigns the 52 cards to deck
     Deck();
 
-    // Get cardCount
-    int getCardCount() const;
+    std::vector<Card> getDeck();
 
     // Shuffles the deck once all the cards are assigned
     void shuffle();
@@ -28,10 +27,7 @@ public:
 private:
 
     // An array of cards of size SIZE
-    Card myDeck[SIZE];
-
-    // Keeps track of the top card
-    int cardCount;
+    std::vector<Card> myDeck;
 
 };
 
