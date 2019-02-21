@@ -37,7 +37,7 @@ public:
     void tradeWithDeck(Deck &cards);
 
     // Lose Life
-    void loseLife();
+    void loseLife(int numLives);
 
 private:
 

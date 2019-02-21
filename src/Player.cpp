@@ -53,6 +53,7 @@ void Player::tradeWithDeck(Deck &cards){
 }
 
 // Lose Life
-void Player::loseLife(){
-    numLives--;
+void Player::loseLife(int lives){
+    lives--;
+    numLives = lives;
 }

@@ -2,6 +2,7 @@
 // Created by Emilio Amaya on 3/7/18.
 //
 
+#include <random>
 #include "../include/Deck.h"
 
 // Default constructor: assigns the 52 cards to deck
@@ -21,9 +22,18 @@ std::vector<Card> Deck::getDeck() {
     return myDeck;
 }
 
-// Shuffles the deck once all the cards are assigned
+// Shuffles the deck
+// This shit is super random!
 void Deck::shuffle(){
-    std::random_shuffle(myDeck.begin(), myDeck.end());
+    std::random_device rd;
+    std::mt19937 rng(rd());
+    std::uniform_int_distribution<int> uni(1,7); // guaranteed unbiased
+
+    auto rand = uni(rng);
+    while(rand > 0) {
+        std::random_shuffle(myDeck.begin(), myDeck.end());
+        rand--;
+    }
 }
 
 // Deals out one card from the deck of 52, references class card
