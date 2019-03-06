@@ -32,6 +32,8 @@ public:
 
     void findLosers();
 
+    void loseLives(std::vector<Player> &player);
+
     void changeDealer();
 
     void showLives();

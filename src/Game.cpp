@@ -96,9 +96,12 @@ void Game::findLosers(){
             losers.push_back(players[l]);
     }
 
-    // Each player in loser vector loses a life
+    loseLives(losers);
+}
+
+void Game::loseLives(std::vector<Player> &losers){
     for(int m = 0 ; m < losers.size() ; m++){
-        losers[m].loseLife(losers[m].getLives());
+        losers[m].loseLife(losers[m]);
         std::cout << losers[m].getName() + " lost!" << std::endl;
         if (losers[m].getLives() == 0)
             eliminatePlayer(losers[m]);
@@ -147,14 +150,17 @@ void Game::playerTrade(Player &p, Player &neighbor, bool last){
     std::cout << p.getName() << ", it's your turn! " << std::endl;
     std::cout << "Your card is " << p.getCard().toString() << std::endl;
     std::cout << "Would you like to trade or pass? (T|P)";
-    getline (std::cin, move);
 
-    /*while(move != "t" && move != "T" && move != "p" && move != "P") {
-        std::cout << "Please make a valid choice " << std::endl;
-        std::cout << "Would you like to trade or pass? (T|P)";
+    int count = 0;
+
+    while(move != "t" && move != "T" && move != "p" && move != "P") {
         getline (std::cin, move);
-    }*/
-    // FIXME the first time it asks to trade or pass it immediately goes into this while??
+        if(count > 0) {
+            std::cout << "Please make a valid choice " << std::endl;
+            std::cout << "Would you like to trade or pass? (T|P)";
+            count++;
+        }
+    }
 
     if(move[0] == 't' || move[0] == 'T'){
         if(last)
